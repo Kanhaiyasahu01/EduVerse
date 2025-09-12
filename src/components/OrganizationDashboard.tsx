@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthStore } from '../store/authStore';
-import { Users, UserPlus, Settings, BarChart3, Award, Plus, Search, Filter, Calendar, Building } from 'lucide-react';
+import { Users, UserPlus, Settings, Award, Plus, Search, Calendar, Building } from 'lucide-react';
 import { dummyPosts, dummyOrganizations } from '../data/dummyData';
 import { Link } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ export const OrganizationDashboard: React.FC = () => {
 
   // Organization-specific data
   const organizationPosts = dummyPosts.filter(post => post.author.organization === user?.organization);
-  const approvedPosts = organizationPosts.filter(post => post.status === 'approved');
+  // const approvedPosts = organizationPosts.filter(post => post.status === 'approved');
   const pendingPosts = organizationPosts.filter(post => post.status === 'pending');
   const organization = dummyOrganizations.find(org => org.name === user?.organization);
 

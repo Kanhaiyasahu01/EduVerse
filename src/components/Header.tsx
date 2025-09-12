@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogIn, UserPlus, LogOut, User, GraduationCap, Search, Home, Users, Bell, MessageSquare, FileText } from 'lucide-react';
+import { LogIn, UserPlus, LogOut, GraduationCap, Search, Home, Users, Bell, MessageSquare, FileText } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 
@@ -13,20 +13,20 @@ export const Header: React.FC = () => {
     navigate('/');
   };
 
-  const getRoleIcon = () => {
-    if (!user) return null;
+  // const getRoleIcon = () => {
+  //   if (!user) return null;
     
-    switch (user.role) {
-      case 'student':
-        return <GraduationCap size={16} className="text-blue-500" />;
-      case 'faculty':
-        return <User size={16} className="text-green-500" />;
-      case 'organization':
-        return <div className="w-4 h-4 bg-purple-500 rounded text-white text-xs flex items-center justify-center font-bold">O</div>;
-      default:
-        return <User size={16} />;
-    }
-  };
+  //   switch (user.role) {
+  //     case 'student':
+  //       return <GraduationCap size={16} className="text-blue-500" />;
+  //     case 'faculty':
+  //       return <User size={16} className="text-green-500" />;
+  //     case 'organization':
+  //       return <div className="w-4 h-4 bg-purple-500 rounded text-white text-xs flex items-center justify-center font-bold">O</div>;
+  //     default:
+  //       return <User size={16} />;
+  //   }
+  // };
 
   const isActive = (path: string) => location.pathname === path;
 

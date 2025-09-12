@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Edit3, Mail, Phone, Calendar, BookOpen, Award, Briefcase, Code, ExternalLink, Github, Linkedin, Plus, Eye, ThumbsUp, MessageCircle, Download, Search, Share2, FileText, Link } from 'lucide-react';
+import { User, Edit3, Mail, Phone, Calendar, BookOpen, Award, Briefcase, Code, ExternalLink, Github, Linkedin, Plus, Eye, ThumbsUp, MessageCircle, Download, Search, FileText, Link } from 'lucide-react';
 import type { StudentProfile as IStudentProfile, Post } from '../types';
 
 // Mock data for current student
@@ -269,6 +269,7 @@ const generatePDF = (profileData: any, template: string) => {
   // 1. Use a library like pdfmake or jspdf to create PDF
   // 2. Format the data according to the selected template
   // 3. Return the PDF file or URL
+  console.log(profileData);
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(`/portfolios/${template}-${Date.now()}.pdf`);
