@@ -556,7 +556,7 @@ class IntegrationService {
   private async simulateApiCall(endpoint: string): Promise<any> {
     // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
-    
+    console.log(endpoint);
     // Simulate occasional failures for testing
     if (Math.random() < 0.1) {
       throw new Error('Network connection failed');
@@ -568,7 +568,7 @@ class IntegrationService {
   private async performSync(integration: IntegrationConfig): Promise<SyncResult> {
     // Simulate sync operation
     await new Promise(resolve => setTimeout(resolve, 2000 + Math.random() * 3000));
-    
+    console.log(integration)
     const recordsProcessed = Math.floor(Math.random() * 100) + 50;
     const recordsAdded = Math.floor(recordsProcessed * 0.3);
     const recordsUpdated = Math.floor(recordsProcessed * 0.5);
