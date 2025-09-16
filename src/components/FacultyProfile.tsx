@@ -20,9 +20,9 @@ import type { FacultyProfile as FacultyProfileType, Post } from '../types';
 // Mock faculty profile data
 const mockFacultyProfile: FacultyProfileType = {
   id: '2',
-  name: 'Dr. Sarah Faculty',
+  name: 'Abhinav Sir',
   email: 'faculty@demo.com',
-  avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b691?w=150&h=150&fit=crop&crop=face',
+  avatar: '/assets/abhinav.jpg',
   bio: 'Professor of Computer Science with 15+ years of experience in Machine Learning and Data Science. Passionate about research and mentoring students.',
   organization: 'GEC Bilaspur',
   department: 'NSS',
@@ -30,7 +30,7 @@ const mockFacultyProfile: FacultyProfileType = {
   qualifications: ['Ph.D. Computer Science', 'M.Tech. Information Technology', 'B.Tech. Computer Engineering'],
   experience: '15 years',
   phone: '+91 9876543210',
-  linkedin: 'https://linkedin.com/in/drsarahfaculty',
+  linkedin: 'https://linkedin.com/in/abhinavsir',
   researchAreas: ['Machine Learning', 'Data Science', 'Artificial Intelligence', 'Computer Vision'],
   publications: [
     {
@@ -38,7 +38,7 @@ const mockFacultyProfile: FacultyProfileType = {
       title: 'Deep Learning Approaches for Educational Data Mining',
       journal: 'IEEE Transactions on Learning Technologies',
       year: '2023',
-      authors: ['Dr. Sarah Faculty', 'Dr. John Smith', 'Dr. Emily Davis'],
+      authors: ['Abhinav Sir', 'Dr. John Smith', 'Dr. Emily Davis'],
       doi: '10.1109/TLT.2023.1234567',
       category: 'Research Paper'
     },
@@ -47,7 +47,7 @@ const mockFacultyProfile: FacultyProfileType = {
       title: 'AI-Powered Student Performance Prediction System',
       journal: 'International Conference on Educational Technology',
       year: '2022',
-      authors: ['Dr. Sarah Faculty', 'Dr. Michael Brown'],
+      authors: ['Abhinav Sir', 'Dr. Michael Brown'],
       category: 'Conference'
     }
   ],
@@ -64,8 +64,8 @@ const mockFacultyPosts: Post[] = [
     content: 'Successfully conducted a 3-day workshop on research methodology for final year students.',
     author: {
       id: '2',
-      name: 'Dr. Sarah Faculty',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b691?w=150&h=150&fit=crop&crop=face',
+      name: 'Abhinav Sir',
+      avatar: '/assets/abhinav.jpg',
       role: 'faculty',
       organization: 'GEC Bilaspur'
     },

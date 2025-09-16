@@ -33,7 +33,7 @@ const dummyUsers: (User & { password: string })[] = [
   },
   {
     id: '2',
-    name: 'Dr. Abhinav Faculty',
+    name: 'Abhinav Sir',
     email: 'faculty@demo.com',
     password: 'password',
     role: 'faculty',
