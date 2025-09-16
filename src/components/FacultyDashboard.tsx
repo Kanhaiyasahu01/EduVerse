@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuthStore } from '../store/authStore';
 import { CheckCircle, XCircle, Clock, Users, FileText, Brain, Bell, Filter, Search } from 'lucide-react';
 import { dummyPosts } from '../data/dummyData';
+import type { Post } from '../types';
 
 export const FacultyDashboard: React.FC = () => {
   const { user } = useAuthStore();
@@ -9,11 +10,14 @@ export const FacultyDashboard: React.FC = () => {
   const [selectedDepartment, setSelectedDepartment] = useState('all');
   const [aiProcessingPosts, setAiProcessingPosts] = useState<Set<string>>(new Set());
   const [aiResults, setAiResults] = useState<Map<string, any>>(new Map());
+  
+  // State to track dynamic post status changes during demo
+  const [posts, setPosts] = useState<Post[]>(dummyPosts);
 
-  // Faculty-specific data
-  const pendingApprovals = dummyPosts.filter(post => post.status === 'pending' && post.department === user?.department);
-  const approvedPosts = dummyPosts.filter(post => post.status === 'approved' && post.department === user?.department);
-  const rejectedPosts = dummyPosts.filter(post => post.status === 'rejected' && post.department === user?.department);
+  // Faculty-specific data - For demo purposes, show all posts from the same organization
+  const pendingApprovals = posts.filter(post => post.status === 'pending');
+  const approvedPosts = posts.filter(post => post.status === 'approved');
+  const rejectedPosts = posts.filter(post => post.status === 'rejected');
 
   const departments = ['NSS', 'Sports', 'Cultural', 'Technical', 'Research'];
   
@@ -26,12 +30,45 @@ export const FacultyDashboard: React.FC = () => {
 
   const handleApprove = (postId: string, reason?: string) => {
     console.log('Approving post:', postId, 'Reason:', reason);
-    // In real app, this would call an API
+    
+    // Update post status to approved
+    setPosts(prevPosts => 
+      prevPosts.map(post => 
+        post.id === postId 
+          ? { 
+              ...post, 
+              status: 'approved' as const,
+              approvedBy: {
+                id: user?.id || 'faculty1',
+                name: user?.name || 'Faculty Member',
+                role: 'faculty' as const
+              }
+            }
+          : post
+      )
+    );
   };
 
   const handleReject = (postId: string, reason: string) => {
     console.log('Rejecting post:', postId, 'Reason:', reason);
-    // In real app, this would call an API
+    
+    // Update post status to rejected
+    setPosts(prevPosts => 
+      prevPosts.map(post => 
+        post.id === postId 
+          ? { 
+              ...post, 
+              status: 'rejected' as const,
+              rejectionReason: reason,
+              rejectedBy: {
+                id: user?.id || 'faculty1',
+                name: user?.name || 'Faculty Member',
+                role: 'faculty' as const
+              }
+            }
+          : post
+      )
+    );
   };
 
   const handleAIVerification = async (post: any) => {
@@ -442,11 +479,64 @@ export const FacultyDashboard: React.FC = () => {
                 </div>
               ))}
 
+              {activeTab === 'rejected' && rejectedPosts.map((post) => (
+                <div key={post.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                  <div className="flex items-start space-x-4">
+                    <img
+                      src={post.author.avatar}
+                      alt={post.author.name}
+                      className="w-12 h-12 rounded-full"
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <h4 className="font-semibold text-gray-900">{post.author.name}</h4>
+                        <span className="px-2 py-1 bg-red-100 text-red-600 text-xs rounded-full">
+                          ✗ Rejected
+                        </span>
+                      </div>
+                      <h3 className="text-lg font-medium text-gray-900 mb-2">{post.title}</h3>
+                      <p className="text-gray-700 mb-3">{post.content}</p>
+                      
+                      {/* Show rejection reason if available */}
+                      {post.rejectionReason && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-3">
+                          <p className="text-sm font-medium text-red-800">Rejection Reason:</p>
+                          <p className="text-sm text-red-700">{post.rejectionReason}</p>
+                        </div>
+                      )}
+                      
+                      {/* Show who rejected it */}
+                      {post.rejectedBy && (
+                        <div className="text-sm text-gray-500">
+                          Rejected by {post.rejectedBy.name}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+
               {(activeTab === 'pending' && pendingApprovals.length === 0) && (
                 <div className="text-center py-8">
                   <Clock size={48} className="mx-auto text-gray-400 mb-4" />
                   <h3 className="text-lg font-medium text-gray-900 mb-2">No pending approvals</h3>
                   <p className="text-gray-600">All caught up! No posts require your approval.</p>
+                </div>
+              )}
+
+              {(activeTab === 'approved' && approvedPosts.length === 0) && (
+                <div className="text-center py-8">
+                  <CheckCircle size={48} className="mx-auto text-gray-400 mb-4" />
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">No approved posts</h3>
+                  <p className="text-gray-600">No posts have been approved yet.</p>
+                </div>
+              )}
+
+              {(activeTab === 'rejected' && rejectedPosts.length === 0) && (
+                <div className="text-center py-8">
+                  <XCircle size={48} className="mx-auto text-gray-400 mb-4" />
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">No rejected posts</h3>
+                  <p className="text-gray-600">No posts have been rejected.</p>
                 </div>
               )}
             </div>

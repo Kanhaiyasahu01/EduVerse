@@ -25,6 +25,11 @@ export interface Post {
     role: 'faculty' | 'organization';
   };
   rejectionReason?: string; // Reason for rejection with comments
+  rejectedBy?: {
+    id: string;
+    name: string;
+    role: 'faculty' | 'organization';
+  };
 }
 
 export interface Organization {

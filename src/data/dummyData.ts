@@ -240,8 +240,8 @@ export const dummyPosts: Post[] = [
   },
   {
     id: 'pending3',
-    title: 'Won Coding Competition at TechFest',
-    content: 'Secured first position in the coding competition at our college TechFest. The problem was about dynamic programming and graph algorithms. Solved all 5 problems in 2.5 hours.',
+    title: 'Full Stack Developer Intern (MERN) at Bharat Economic Forum',
+    content: 'Successfully completed a Full Stack Developer Internship at Bharat Economic Forum from May 2025 to August 2025. During this remote internship, I was promoted to Lead of the BEF Developers Committee, where I directed the GitHub organization and led 30+ developers to deliver the official BEF website using MERN stack. I also developed an email automation platform using SendGrid and OpenAI to deliver bulk emails to 1,000+ users, and built an AI-powered bulk call assistant using the Blend AI API, automating outreach to 1,000+ users per hour.',
     author: {
       id: 's9',
       name: 'Anshu',
@@ -249,13 +249,39 @@ export const dummyPosts: Post[] = [
       role: 'student',
       organization: 'GEC Bilaspur'
     },
-    category: 'Technical',
+    category: 'Internship',
     department: 'Technical',
     visibility: 'public',
     status: 'pending',
-    attachments: ['competition_certificate.pdf', 'code_solutions.zip'],
+    images: [
+      '/src/assets/Internship.png'
+    ],
+    attachments: ['internship_certificate.pdf', 'project_reports.pdf'],
     likes: 0,
     comments: 0,
     createdAt: '2024-01-18T09:20:00Z'
+  },
+  {
+    id: 'pending4',
+    title: 'Cultural Performance at State Level Competition',
+    content: 'Our college dance team performed classical Indian dance at the State Level Cultural Competition held in Delhi. We secured second position among 45 participating colleges. The performance was based on the theme "Unity in Diversity" and showcased traditional dances from different Indian states.',
+    author: {
+      id: 's10',
+      name: 'Kanhaiya',
+      avatar: '/src/assets/Profile.jpg',
+      role: 'student',
+      organization: 'GEC Bilaspur'
+    },
+    category: 'Cultural',
+    department: 'Cultural',
+    visibility: 'public',
+    status: 'pending',
+    images: [
+      'https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=500&h=300&fit=crop'
+    ],
+    attachments: ['performance_certificate.pdf', 'competition_photos.zip'],
+    likes: 0,
+    comments: 0,
+    createdAt: '2024-01-17T14:30:00Z'
   }
 ];

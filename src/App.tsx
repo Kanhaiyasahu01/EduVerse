@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Header } from './components/Header';
 import { LandingPage } from './components/LandingPage';
 import { Login } from './components/Login';
@@ -73,6 +75,20 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        
+        {/* Toast Container */}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
     </Router>
   );
