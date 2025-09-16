@@ -153,7 +153,7 @@ const mockStudentProfile: IStudentProfile = {
   id: 's1',
   name: 'Kanhaiya Lal Sahu',
   email: 'kanhaiya.sahu@gecbilaspur.edu',
-  avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+  avatar: '/assets/Profile.jpg',
   bio: 'Passionate Computer Science student interested in AI/ML, Full-Stack Development, and Open Source contributions. Always eager to learn new technologies and solve real-world problems.',
   organization: 'GEC Bilaspur',
   course: 'B.Tech Computer Science Engineering',
@@ -248,7 +248,7 @@ const mockStudentPosts: Post[] = [
     author: {
       id: 's1',
       name: 'Kanhaiya Lal Sahu',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+      avatar: '/assets/Profile.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
