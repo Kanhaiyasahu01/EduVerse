@@ -355,7 +355,7 @@ const OrganizationProfile: React.FC = () => {
         <div className="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
           <div className="h-32 bg-gradient-to-r from-green-600 to-blue-600"></div>
           <div className="px-6 pb-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-end -mt-16 mb-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-end -mt-10 mb-4">
               <img
                 src={profile.logo}
                 alt={profile.name}

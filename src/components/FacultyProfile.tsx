@@ -20,9 +20,9 @@ import type { FacultyProfile as FacultyProfileType, Post } from '../types';
 // Mock faculty profile data
 const mockFacultyProfile: FacultyProfileType = {
   id: '2',
-  name: 'Dr. Abhinav Faculty',
+  name: 'Dr. Sarah Faculty',
   email: 'faculty@demo.com',
-  avatar: '/src/assets/abhinav.jpg',
+  avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b691?w=150&h=150&fit=crop&crop=face',
   bio: 'Professor of Computer Science with 15+ years of experience in Machine Learning and Data Science. Passionate about research and mentoring students.',
   organization: 'GEC Bilaspur',
   department: 'NSS',
@@ -64,8 +64,8 @@ const mockFacultyPosts: Post[] = [
     content: 'Successfully conducted a 3-day workshop on research methodology for final year students.',
     author: {
       id: '2',
-      name: 'Dr. Abhinav Faculty',
-      avatar: '/src/assets/abhinav.jpg',
+      name: 'Dr. Sarah Faculty',
+      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b691?w=150&h=150&fit=crop&crop=face',
       role: 'faculty',
       organization: 'GEC Bilaspur'
     },
@@ -265,7 +265,7 @@ const FacultyProfile: React.FC = () => {
         <div className="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
           <div className="h-32 bg-gradient-to-r from-blue-600 to-purple-600"></div>
           <div className="px-6 pb-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-end -mt-16 mb-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-end -mt-10 mb-4">
               <img
                 src={profile.avatar}
                 alt={profile.name}
