@@ -20,9 +20,9 @@ import type { FacultyProfile as FacultyProfileType, Post } from '../types';
 // Mock faculty profile data
 const mockFacultyProfile: FacultyProfileType = {
   id: '2',
-  name: 'Dr. Sarah Faculty',
+  name: 'Dr. Abhinav Faculty',
   email: 'faculty@demo.com',
-  avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b691?w=150&h=150&fit=crop&crop=face',
+  avatar: '/src/assets/abhinav.jpg',
   bio: 'Professor of Computer Science with 15+ years of experience in Machine Learning and Data Science. Passionate about research and mentoring students.',
   organization: 'GEC Bilaspur',
   department: 'NSS',
@@ -64,8 +64,8 @@ const mockFacultyPosts: Post[] = [
     content: 'Successfully conducted a 3-day workshop on research methodology for final year students.',
     author: {
       id: '2',
-      name: 'Dr. Sarah Faculty',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b691?w=150&h=150&fit=crop&crop=face',
+      name: 'Dr. Abhinav Faculty',
+      avatar: '/src/assets/abhinav.jpg',
       role: 'faculty',
       organization: 'GEC Bilaspur'
     },

@@ -22,15 +22,15 @@ export const OrganizationDashboard: React.FC = () => {
   ];
 
   const facultyMembers = [
-    { id: 'f1', name: 'Dr. Sarah Faculty', department: 'Technical', email: 'sarah@gecbilaspur.edu', students: 45 },
-    { id: 'f2', name: 'Prof. Rajesh Kumar', department: 'NSS', email: 'rajesh@gecbilaspur.edu', students: 78 },
-    { id: 'f3', name: 'Dr. Priya Sharma', department: 'Sports', email: 'priya@gecbilaspur.edu', students: 32 },
-    { id: 'f4', name: 'Dr. Amit Verma', department: 'Cultural', email: 'amit@gecbilaspur.edu', students: 56 },
+    { id: 'f1', name: 'Dr. Kanhaiya Faculty', department: 'Technical', email: 'kanhaiya@gecbilaspur.edu', students: 45 },
+    { id: 'f2', name: 'Prof. Abhinav Kumar', department: 'NSS', email: 'abhinav@gecbilaspur.edu', students: 78 },
+    { id: 'f3', name: 'Dr. Anshu Sharma', department: 'Sports', email: 'anshu@gecbilaspur.edu', students: 32 },
+    { id: 'f4', name: 'Dr. Apoorva Verma', department: 'Cultural', email: 'apoorva@gecbilaspur.edu', students: 56 },
   ];
 
   const recentActivities = [
-    { type: 'new_student', message: 'New student registration: Rahul Sharma', time: '2 hours ago' },
-    { type: 'faculty_approval', message: 'Dr. Sarah approved 3 technical posts', time: '4 hours ago' },
+    { type: 'new_student', message: 'New student registration: Kanhaiya', time: '2 hours ago' },
+    { type: 'faculty_approval', message: 'Dr. Kanhaiya approved 3 technical posts', time: '4 hours ago' },
     { type: 'event_created', message: 'New event: Annual Tech Fest 2024', time: '1 day ago' },
     { type: 'achievement', message: 'Sports team won inter-college championship', time: '2 days ago' },
   ];

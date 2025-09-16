@@ -23,24 +23,24 @@ interface AuthState {
 const dummyUsers: (User & { password: string })[] = [
   {
     id: '1',
-    name: 'John Student',
+    name: 'Kanhaiya',
     email: 'student@demo.com',
     password: 'password',
     role: 'student',
     organizationId: 'org1',
     organization: 'GEC Bilaspur',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face'
+    avatar: '/src/assets/Profile.jpg'
   },
   {
     id: '2',
-    name: 'Dr. Sarah Faculty',
+    name: 'Dr. Abhinav Faculty',
     email: 'faculty@demo.com',
     password: 'password',
     role: 'faculty',
     organizationId: 'org1',
     organization: 'GEC Bilaspur',
     department: 'NSS',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b691?w=150&h=150&fit=crop&crop=face'
+    avatar: '/src/assets/abhinav.jpg'
   },
   {
     id: '3',
@@ -49,7 +49,7 @@ const dummyUsers: (User & { password: string })[] = [
     password: 'password',
     role: 'organization',
     organization: 'GEC Bilaspur',
-    avatar: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=150&h=150&fit=crop'
+    avatar: '/src/assets/Profile.jpg'
   }
 ];
 

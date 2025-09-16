@@ -37,8 +37,8 @@ export const dummyPosts: Post[] = [
     content: 'Excited to share that our team "Code Warriors" won the first prize at the National Hackathon 2024 organized by Tech India Foundation. We developed an AI-powered solution for sustainable agriculture that helps farmers optimize crop yield using machine learning algorithms and IoT sensors.',
     author: {
       id: 's1',
-      name: 'Rahul Sharma',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+      name: 'Kanhaiya',
+      avatar: '/src/assets/Profile.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
@@ -66,8 +66,8 @@ export const dummyPosts: Post[] = [
     content: 'Successfully passed the AWS Cloud Practitioner exam with a score of 890/1000! This certification validates my understanding of AWS Cloud fundamentals, security, and billing. Grateful to our college for providing access to AWS Academy resources.',
     author: {
       id: 's2',
-      name: 'Priya Patel',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b691?w=150&h=150&fit=crop&crop=face',
+      name: 'Abhinav',
+      avatar: '/src/assets/abhinav.jpg',
       role: 'student',
       organization: 'XYZ College'
     },
@@ -94,8 +94,8 @@ export const dummyPosts: Post[] = [
     content: 'Organized a successful blood donation camp in collaboration with City Hospital. We managed to collect blood from 200+ donors, which will help save countless lives. Proud to be part of NSS and contribute to society. Special thanks to all volunteers and donors!',
     author: {
       id: 's3',
-      name: 'Arjun Singh',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+      name: 'Anshu',
+      avatar: '/src/assets/anshu.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
@@ -123,8 +123,8 @@ export const dummyPosts: Post[] = [
     content: 'My research paper titled "Machine Learning Approaches for Predictive Healthcare Analytics" has been accepted and published in IEEE International Conference on Healthcare Informatics. This work focuses on using deep learning for early disease prediction.',
     author: {
       id: 's4',
-      name: 'Sneha Reddy',
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+      name: 'Apoorva',
+      avatar: '/src/assets/apporva.jpg',
       role: 'student',
       organization: 'PQR Institute'
     },
@@ -148,8 +148,8 @@ export const dummyPosts: Post[] = [
     content: 'Our college basketball team secured the runner-up position in the State Level Basketball Championship 2024. It was an intense tournament with 32 teams participating. We fought hard and gave our best performance. Proud of the entire team!',
     author: {
       id: 's5',
-      name: 'Vikram Joshi',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
+      name: 'Shakish',
+      avatar: '/src/assets/shakish.jpg',
       role: 'student',
       organization: 'XYZ College'
     },
@@ -174,8 +174,8 @@ export const dummyPosts: Post[] = [
     content: 'Thrilled to announce that I have been selected for Google Summer of Code 2024! I will be working on an open-source project related to machine learning frameworks. This is a dream come true and I am excited to contribute to the open-source community.',
     author: {
       id: 's6',
-      name: 'Kavya Nair',
-      avatar: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop&crop=face',
+      name: 'Venkatesh',
+      avatar: '/src/assets/venk.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
@@ -200,9 +200,9 @@ export const dummyPosts: Post[] = [
     title: 'Participated in Inter-College Basketball Championship',
     content: 'Our team reached the semi-finals in the Inter-College Basketball Championship held at Sports Complex. I scored 23 points in the quarter-final match against ABC College.',
     author: {
-      id: 's6',
-      name: 'Arjun Singh',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+      id: 's7',
+      name: 'Kanhaiya',
+      avatar: '/src/assets/Profile.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
@@ -220,9 +220,9 @@ export const dummyPosts: Post[] = [
     title: 'Organized Blood Donation Camp',
     content: 'Successfully organized a blood donation camp in collaboration with local hospital. We managed to collect 150 units of blood and helped save many lives. This was part of our NSS initiative.',
     author: {
-      id: 's7',
-      name: 'Kavya Sharma',
-      avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face',
+      id: 's8',
+      name: 'Abhinav',
+      avatar: '/src/assets/abhinav.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
@@ -243,9 +243,9 @@ export const dummyPosts: Post[] = [
     title: 'Won Coding Competition at TechFest',
     content: 'Secured first position in the coding competition at our college TechFest. The problem was about dynamic programming and graph algorithms. Solved all 5 problems in 2.5 hours.',
     author: {
-      id: 's8',
-      name: 'Rohit Kumar',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
+      id: 's9',
+      name: 'Anshu',
+      avatar: '/src/assets/anshu.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },

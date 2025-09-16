@@ -501,9 +501,9 @@ export const FacultyDashboard: React.FC = () => {
                 <h3 className="font-semibold text-gray-900 mb-4">Top Students</h3>
                 <div className="space-y-3">
                   {[
-                    { name: 'Priya Sharma', achievements: 12, avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b691?w=32&h=32&fit=crop&crop=face' },
-                    { name: 'Rahul Kumar', achievements: 8, avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face' },
-                    { name: 'Anjali Patel', achievements: 6, avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face' },
+                    { name: 'Kanhaiya', achievements: 12, avatar: '/src/assets/Profile.jpg' },
+                    { name: 'Abhinav', achievements: 8, avatar: '/src/assets/abhinav.jpg' },
+                    { name: 'Apoorva', achievements: 6, avatar: '/src/assets/apporva.jpg' },
                   ].map((student, index) => (
                     <div key={index} className="flex items-center space-x-3 cursor-pointer hover:bg-gray-50 p-2 rounded-md">
                       <img src={student.avatar} alt={student.name} className="w-8 h-8 rounded-full" />

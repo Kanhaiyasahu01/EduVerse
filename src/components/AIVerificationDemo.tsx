@@ -15,7 +15,7 @@ const AIVerificationDemo: React.FC = () => {
       { name: 'blood_camp_photo.jpg', type: 'photo' }
     ],
     author: {
-      name: 'Rahul Sharma',
+      name: 'Kanhaiya',
       year: 3,
       department: 'Computer Science',
       previousActivities: ['Environmental awareness drive', 'Tree plantation']

@@ -42,9 +42,9 @@ export const RightSidebar: React.FC = () => {
 
   // Achievement leaderboard
   const leaderboard = [
-    { rank: 1, name: 'Priya Sharma', points: 1250, avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b691?w=32&h=32&fit=crop&crop=face' },
-    { rank: 2, name: 'Rahul Kumar', points: 1180, avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face' },
-    { rank: 3, name: 'Anjali Patel', points: 1050, avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face' },
+    { rank: 1, name: 'Kanhaiya', points: 1250, avatar: '/src/assets/Profile.jpg' },
+    { rank: 2, name: 'Abhinav', points: 1180, avatar: '/src/assets/abhinav.jpg' },
+    { rank: 3, name: 'Apoorva', points: 1050, avatar: '/src/assets/apporva.jpg' },
   ];
 
   return (
