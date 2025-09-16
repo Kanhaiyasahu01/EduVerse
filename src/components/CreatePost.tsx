@@ -96,7 +96,15 @@ export const CreatePost: React.FC = () => {
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
       <div className="flex items-start space-x-3">
         <img
-          src={user?.avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&h=48&fit=crop&crop=face'}
+          src={
+            user?.avatar || 
+            (user?.role === 'organization' 
+              ? 'https://images.unsplash.com/photo-1562774053-701939374585?w=48&h=48&fit=crop'
+              : user?.role === 'faculty'
+              ? 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&fit=crop&crop=face'
+              : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&h=48&fit=crop&crop=face'
+            )
+          }
           alt={user?.name || 'User'}
           className="w-12 h-12 rounded-full"
         />

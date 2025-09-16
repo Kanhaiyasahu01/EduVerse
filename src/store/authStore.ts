@@ -49,7 +49,7 @@ const dummyUsers: (User & { password: string })[] = [
     password: 'password',
     role: 'organization',
     organization: 'GEC Bilaspur',
-    avatar: '/assets/Profile.jpg'
+    avatar: 'https://images.unsplash.com/photo-1562774053-701939374585?w=150&h=150&fit=crop'
   }
 ];
 

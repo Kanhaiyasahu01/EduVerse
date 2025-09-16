@@ -120,7 +120,15 @@ export const Header: React.FC = () => {
                   }`}
                 >
                   <img
-                    src={user?.avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face'}
+                    src={
+                      user?.avatar || 
+                      (user?.role === 'organization' 
+                        ? 'https://images.unsplash.com/photo-1562774053-701939374585?w=32&h=32&fit=crop'
+                        : user?.role === 'faculty'
+                        ? 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face'
+                        : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face'
+                      )
+                    }
                     alt={user?.name}
                     className="w-8 h-8 rounded-full"
                   />

@@ -39,7 +39,15 @@ export const LeftSidebar: React.FC = () => {
         <div className="px-6 pb-4">
           <div className="relative -mt-8 mb-4">
             <img
-              src={user?.avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face'}
+              src={
+                user?.avatar || 
+                (user?.role === 'organization' 
+                  ? 'https://images.unsplash.com/photo-1562774053-701939374585?w=80&h=80&fit=crop'
+                  : user?.role === 'faculty'
+                  ? 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face'
+                  : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face'
+                )
+              }
               alt={user?.name || 'User'}
               className="w-16 h-16 rounded-full border-4 border-white bg-white"
             />
