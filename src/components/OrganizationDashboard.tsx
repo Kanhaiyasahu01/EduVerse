@@ -4,6 +4,7 @@ import { Users, UserPlus, Settings, Award, Plus, Search, Calendar, Building } fr
 import { dummyPosts, dummyOrganizations } from '../data/dummyData';
 import { Link } from 'react-router-dom';
 import { AnalyticsDashboard } from './AnalyticsDashboard';
+import { IntegrationDashboard } from './IntegrationDashboard';
 import InstitutionalAnalyticsService from '../services/InstitutionalAnalyticsService';
 
 export const OrganizationDashboard: React.FC = () => {
@@ -109,6 +110,7 @@ export const OrganizationDashboard: React.FC = () => {
                 { id: 'faculty', label: 'Faculty Management' },
                 { id: 'departments', label: 'Departments' },
                 { id: 'analytics', label: 'Analytics' },
+                { id: 'integrations', label: 'Integrations' },
                 { id: 'settings', label: 'Settings' },
               ].map((tab) => (
                 <button
@@ -239,6 +241,10 @@ export const OrganizationDashboard: React.FC = () => {
             {activeTab === 'analytics' && (
               <AnalyticsDashboard organizationName={user?.organization || 'Your Organization'} />
             )}
+
+            {activeTab === 'integrations' && (
+              <IntegrationDashboard organizationName={user?.organization || 'GEC Bilaspur'} />
+            )}
           </div>
 
           {/* Right Sidebar */}
@@ -265,6 +271,15 @@ export const OrganizationDashboard: React.FC = () => {
                   </button>
                   <button className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
                     📧 Send Announcements
+                  </button>
+                  <button 
+                    onClick={() => setActiveTab('integrations')}
+                    className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors"
+                  >
+                    🔗 Manage Integrations
+                  </button>
+                  <button className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
+                    🏫 Sync GEC Bilaspur ERP
                   </button>
                 </div>
               </div>
