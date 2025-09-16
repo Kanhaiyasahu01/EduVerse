@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { User, Edit3, Mail, Phone, Calendar, BookOpen, Award, Briefcase, Code, ExternalLink, Github, Linkedin, Plus, Eye, ThumbsUp, MessageCircle, Download, Search, FileText, Link } from 'lucide-react';
 import type { StudentProfile as IStudentProfile, Post } from '../types';
+import PortfolioAIService from '../services/PortfolioAIService';
 
 // Mock data for current student
 // Mock data for student dashboard
@@ -263,31 +264,20 @@ const mockStudentPosts: Post[] = [
   }
 ];
 
-// Function to generate PDF portfolio
-const generatePDF = (profileData: any, template: string) => {
-  // This is a mock function - in real implementation, you would:
-  // 1. Use a library like pdfmake or jspdf to create PDF
-  // 2. Format the data according to the selected template
-  // 3. Return the PDF file or URL
-  console.log(profileData);
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(`/portfolios/${template}-${Date.now()}.pdf`);
-    }, 2000);
-  });
-};
+// Function to re-generate and download existing portfolio
+const regeneratePortfolio = async (portfolioType: string) => {
+  try {
+    const htmlContent = await PortfolioAIService.generatePortfolio({
+      template: 't1',
+      format: 'html',
+      style: 'modern'
+    });
 
-// Function to generate web link portfolio
-const generateWebLink = (profileData: any, template: string) => {
-  // This is a mock function - in real implementation, you would:
-  // 1. Create a unique URL for the portfolio
-  // 2. Save the portfolio data to the backend
-  // 3. Return the shareable link
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(`https://eduverse.com/portfolio/${profileData.id}/${template}-${Date.now()}`);
-    }, 2000);
-  });
+    const filename = `kanhaiya-${portfolioType.toLowerCase().replace(' ', '-')}-${Date.now()}.html`;
+    PortfolioAIService.downloadPortfolio(htmlContent, filename);
+  } catch (error) {
+    console.error('Error regenerating portfolio:', error);
+  }
 };
 
 export const StudentProfileComponent: React.FC = () => {
@@ -848,30 +838,32 @@ export const StudentProfileComponent: React.FC = () => {
       // Get the selected template details
       const templateDetails = mockPortfolioData.templateOptions.find(t => t.id === selectedTemplate);
       
-      // Generate portfolio based on selected format
-      let result: string;
-      if (selectedFormat === 'pdf') {
-        result = await generatePDF(profile, selectedTemplate) as string;
-      } else {
-        result = await generateWebLink(profile, selectedTemplate) as string;
-      }
+      // Generate portfolio using AI service
+      const htmlContent = await PortfolioAIService.generatePortfolio({
+        template: selectedTemplate,
+        format: 'html',
+        style: 'modern'
+      });
+
+      // Auto-download the generated portfolio
+      const filename = `kanhaiya-portfolio-${Date.now()}.html`;
+      PortfolioAIService.downloadPortfolio(htmlContent, filename);
 
       // Add the new portfolio to the list
       const newPortfolio = {
         id: `p${Date.now()}`,
-        type: templateDetails?.name || 'Custom Portfolio',
-        format: selectedFormat.toUpperCase(),
+        type: templateDetails?.name || 'AI Generated Portfolio',
+        format: 'HTML',
         generatedAt: new Date().toISOString(),
-        url: selectedFormat === 'pdf' ? result : '',
-        shareableLink: selectedFormat === 'weblink' ? result : `https://eduverse.com/portfolio/${profile.id}/latest`,
-        downloads: 0,
+        url: `downloads/${filename}`,
+        shareableLink: `https://eduverse.com/portfolio/kanhaiya/${selectedTemplate}-${Date.now()}`,
+        downloads: 1,
         views: 0
       } as const;
 
       setGeneratedItems(prev => [newPortfolio, ...prev]);
     } catch (error) {
       console.error('Error generating portfolio:', error);
-      // You can add error handling UI here
     } finally {
       setIsGenerating(false);
     }
@@ -980,15 +972,13 @@ export const StudentProfileComponent: React.FC = () => {
                       <Link className="w-4 h-4" />
                       <span>Copy Link</span>
                     </button>
-                    <a
-                      href={portfolio.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      onClick={() => regeneratePortfolio(portfolio.type)}
                       className="flex items-center space-x-2 px-3 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                     >
                       <Download className="w-4 h-4" />
                       <span>Download</span>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>

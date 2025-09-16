@@ -3,10 +3,21 @@ import { useAuthStore } from '../store/authStore';
 import { Users, UserPlus, Settings, Award, Plus, Search, Calendar, Building } from 'lucide-react';
 import { dummyPosts, dummyOrganizations } from '../data/dummyData';
 import { Link } from 'react-router-dom';
+import { AnalyticsDashboard } from './AnalyticsDashboard';
+import InstitutionalAnalyticsService from '../services/InstitutionalAnalyticsService';
 
 export const OrganizationDashboard: React.FC = () => {
   const { user } = useAuthStore();
   const [activeTab, setActiveTab] = useState('overview');
+
+  const handleGenerateNAACReport = async () => {
+    try {
+      const reportData = await InstitutionalAnalyticsService.generateComprehensiveReport(user?.organization || 'Your Organization');
+      await InstitutionalAnalyticsService.exportReportAsPDF(reportData, 'NAAC');
+    } catch (error) {
+      console.error('Error generating NAAC report:', error);
+    }
+  };
 
   // Organization-specific data
   const organizationPosts = dummyPosts.filter(post => post.author.organization === user?.organization);
@@ -226,33 +237,7 @@ export const OrganizationDashboard: React.FC = () => {
             )}
 
             {activeTab === 'analytics' && (
-              <div className="space-y-6">
-                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Analytics Dashboard</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <h4 className="font-medium text-blue-900 mb-2">Student Engagement</h4>
-                      <p className="text-2xl font-bold text-blue-700">85%</p>
-                      <p className="text-sm text-blue-600">Active participation rate</p>
-                    </div>
-                    <div className="bg-green-50 p-4 rounded-lg">
-                      <h4 className="font-medium text-green-900 mb-2">Achievement Rate</h4>
-                      <p className="text-2xl font-bold text-green-700">92%</p>
-                      <p className="text-sm text-green-600">Posts approved this month</p>
-                    </div>
-                    <div className="bg-purple-50 p-4 rounded-lg">
-                      <h4 className="font-medium text-purple-900 mb-2">Department Growth</h4>
-                      <p className="text-2xl font-bold text-purple-700">+12%</p>
-                      <p className="text-sm text-purple-600">New registrations</p>
-                    </div>
-                    <div className="bg-orange-50 p-4 rounded-lg">
-                      <h4 className="font-medium text-orange-900 mb-2">Event Participation</h4>
-                      <p className="text-2xl font-bold text-orange-700">78%</p>
-                      <p className="text-sm text-orange-600">Average attendance</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <AnalyticsDashboard organizationName={user?.organization || 'Your Organization'} />
             )}
           </div>
 
@@ -266,7 +251,10 @@ export const OrganizationDashboard: React.FC = () => {
                   <Link to="/posts" className="w-full block text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
                     📋 Browse All Posts
                   </Link>
-                  <button className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
+                  <button 
+                    onClick={handleGenerateNAACReport}
+                    className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors"
+                  >
                     📊 Generate NAAC Report
                   </button>
                   <button className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
