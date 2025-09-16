@@ -29,7 +29,7 @@ const dummyUsers: (User & { password: string })[] = [
     role: 'student',
     organizationId: 'org1',
     organization: 'GEC Bilaspur',
-    avatar: '/src/assets/Profile.jpg'
+    avatar: '/assets/Profile.jpg'
   },
   {
     id: '2',
@@ -40,7 +40,7 @@ const dummyUsers: (User & { password: string })[] = [
     organizationId: 'org1',
     organization: 'GEC Bilaspur',
     department: 'NSS',
-    avatar: '/src/assets/abhinav.jpg'
+    avatar: '/assets/abhinav.jpg'
   },
   {
     id: '3',
@@ -49,7 +49,7 @@ const dummyUsers: (User & { password: string })[] = [
     password: 'password',
     role: 'organization',
     organization: 'GEC Bilaspur',
-    avatar: '/src/assets/Profile.jpg'
+    avatar: '/assets/Profile.jpg'
   }
 ];
 

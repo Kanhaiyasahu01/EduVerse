@@ -591,9 +591,9 @@ export const FacultyDashboard: React.FC = () => {
                 <h3 className="font-semibold text-gray-900 mb-4">Top Students</h3>
                 <div className="space-y-3">
                   {[
-                    { name: 'Kanhaiya', achievements: 12, avatar: '/src/assets/Profile.jpg' },
-                    { name: 'Abhinav', achievements: 8, avatar: '/src/assets/abhinav.jpg' },
-                    { name: 'Apoorva', achievements: 6, avatar: '/src/assets/apporva.jpg' },
+                    { name: 'Kanhaiya', achievements: 12, avatar: '/assets/Profile.jpg' },
+                    { name: 'Abhinav', achievements: 8, avatar: '/assets/abhinav.jpg' },
+                    { name: 'Apoorva', achievements: 6, avatar: '/assets/apporva.jpg' },
                   ].map((student, index) => (
                     <div key={index} className="flex items-center space-x-3 cursor-pointer hover:bg-gray-50 p-2 rounded-md">
                       <img src={student.avatar} alt={student.name} className="w-8 h-8 rounded-full" />

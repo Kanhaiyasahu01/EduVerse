@@ -42,9 +42,9 @@ export const RightSidebar: React.FC = () => {
 
   // Achievement leaderboard
   const leaderboard = [
-    { rank: 1, name: 'Kanhaiya', points: 1250, avatar: '/src/assets/Profile.jpg' },
-    { rank: 2, name: 'Abhinav', points: 1180, avatar: '/src/assets/abhinav.jpg' },
-    { rank: 3, name: 'Apoorva', points: 1050, avatar: '/src/assets/apporva.jpg' },
+    { rank: 1, name: 'Kanhaiya', points: 1250, avatar: '/assets/Profile.jpg' },
+    { rank: 2, name: 'Abhinav', points: 1180, avatar: '/assets/abhinav.jpg' },
+    { rank: 3, name: 'Apoorva', points: 1050, avatar: '/assets/apporva.jpg' },
   ];
 
   return (

@@ -38,7 +38,7 @@ export const dummyPosts: Post[] = [
     author: {
       id: 's1',
       name: 'Kanhaiya',
-      avatar: '/src/assets/Profile.jpg',
+      avatar: '/assets/Profile.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
@@ -67,7 +67,7 @@ export const dummyPosts: Post[] = [
     author: {
       id: 's2',
       name: 'Abhinav',
-      avatar: '/src/assets/abhinav.jpg',
+      avatar: '/assets/abhinav.jpg',
       role: 'student',
       organization: 'XYZ College'
     },
@@ -95,7 +95,7 @@ export const dummyPosts: Post[] = [
     author: {
       id: 's3',
       name: 'Anshu',
-      avatar: '/src/assets/anshu.jpg',
+      avatar: '/assets/anshu.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
@@ -124,7 +124,7 @@ export const dummyPosts: Post[] = [
     author: {
       id: 's4',
       name: 'Apoorva',
-      avatar: '/src/assets/apporva.jpg',
+      avatar: '/assets/apporva.jpg',
       role: 'student',
       organization: 'PQR Institute'
     },
@@ -149,7 +149,7 @@ export const dummyPosts: Post[] = [
     author: {
       id: 's5',
       name: 'Shakish',
-      avatar: '/src/assets/shakish.jpg',
+      avatar: '/assets/shakish.jpg',
       role: 'student',
       organization: 'XYZ College'
     },
@@ -175,7 +175,7 @@ export const dummyPosts: Post[] = [
     author: {
       id: 's6',
       name: 'Venkatesh',
-      avatar: '/src/assets/venk.jpg',
+      avatar: '/assets/venk.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
@@ -202,7 +202,7 @@ export const dummyPosts: Post[] = [
     author: {
       id: 's7',
       name: 'Kanhaiya',
-      avatar: '/src/assets/Profile.jpg',
+      avatar: '/assets/Profile.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
@@ -222,7 +222,7 @@ export const dummyPosts: Post[] = [
     author: {
       id: 's8',
       name: 'Abhinav',
-      avatar: '/src/assets/abhinav.jpg',
+      avatar: '/assets/abhinav.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
@@ -245,7 +245,7 @@ export const dummyPosts: Post[] = [
     author: {
       id: 's9',
       name: 'Anshu',
-      avatar: '/src/assets/anshu.jpg',
+      avatar: '/assets/anshu.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
@@ -254,7 +254,7 @@ export const dummyPosts: Post[] = [
     visibility: 'public',
     status: 'pending',
     images: [
-      '/src/assets/Internship.png'
+      '/assets/Internship.png'
     ],
     attachments: ['internship_certificate.pdf', 'project_reports.pdf'],
     likes: 0,
@@ -268,7 +268,7 @@ export const dummyPosts: Post[] = [
     author: {
       id: 's10',
       name: 'Kanhaiya',
-      avatar: '/src/assets/Profile.jpg',
+      avatar: '/assets/Profile.jpg',
       role: 'student',
       organization: 'GEC Bilaspur'
     },
