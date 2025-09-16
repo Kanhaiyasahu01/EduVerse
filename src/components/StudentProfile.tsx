@@ -116,7 +116,7 @@ const mockPortfolioData = {
       format: 'PDF',
       generatedAt: '2024-08-15T10:30:00Z',
       url: '/portfolios/complete-portfolio.pdf',
-      shareableLink: 'https://eduverse.com/portfolio/rahul-sharma/complete',
+      shareableLink: 'https://eduverse.com/portfolio/kanhaiya-sahu/complete',
       downloads: 15,
       views: 45
     },
@@ -126,7 +126,7 @@ const mockPortfolioData = {
       format: 'PDF',
       generatedAt: '2024-08-10T14:20:00Z',
       url: '/portfolios/academic-portfolio.pdf',
-      shareableLink: 'https://eduverse.com/portfolio/rahul-sharma/academic',
+      shareableLink: 'https://eduverse.com/portfolio/kanhaiya-sahu/academic',
       downloads: 8,
       views: 25
     },
@@ -136,7 +136,7 @@ const mockPortfolioData = {
       format: 'PDF',
       generatedAt: '2024-08-05T09:15:00Z',
       url: '/portfolios/technical-portfolio.pdf',
-      shareableLink: 'https://eduverse.com/portfolio/rahul-sharma/technical',
+      shareableLink: 'https://eduverse.com/portfolio/kanhaiya-sahu/technical',
       downloads: 12,
       views: 30
     }
@@ -151,8 +151,8 @@ const mockPortfolioData = {
 
 const mockStudentProfile: IStudentProfile = {
   id: 's1',
-  name: 'Rahul Sharma',
-  email: 'rahul.sharma@gecbilaspur.edu',
+  name: 'Kanhaiya Lal Sahu',
+  email: 'kanhaiya.sahu@gecbilaspur.edu',
   avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
   bio: 'Passionate Computer Science student interested in AI/ML, Full-Stack Development, and Open Source contributions. Always eager to learn new technologies and solve real-world problems.',
   organization: 'GEC Bilaspur',
@@ -160,9 +160,9 @@ const mockStudentProfile: IStudentProfile = {
   year: '3rd Year',
   rollNumber: 'CSE2022001',
   phone: '+91-9876543210',
-  linkedin: 'linkedin.com/in/rahulsharma-dev',
-  github: 'github.com/rahul-dev',
-  portfolio: 'rahulsharma.dev',
+  linkedin: 'linkedin.com/in/kanhaiyasahu-dev',
+  github: 'github.com/kanhaiyasahu01',
+  portfolio: 'kanhaiyasahu.dev',
   skills: [
     { id: '1', name: 'React.js', level: 'Advanced', endorsements: 15 },
     { id: '2', name: 'Node.js', level: 'Intermediate', endorsements: 12 },
@@ -180,7 +180,7 @@ const mockStudentProfile: IStudentProfile = {
       startDate: '2023-10-01',
       endDate: '2024-01-15',
       status: 'Completed',
-      githubUrl: 'https://github.com/rahul-dev/agriculture-ai',
+      githubUrl: 'https://github.com/kanhaiya-sahu/agriculture-ai',
       images: ['https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=250&fit=crop']
     },
     {
@@ -190,7 +190,7 @@ const mockStudentProfile: IStudentProfile = {
       technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
       startDate: '2024-01-01',
       status: 'In Progress',
-      githubUrl: 'https://github.com/rahul-dev/eduverse',
+      githubUrl: 'https://github.com/kanhaiya-sahu/eduverse',
       liveUrl: 'https://eduverse-demo.com'
     }
   ],
@@ -247,7 +247,7 @@ const mockStudentPosts: Post[] = [
     content: 'Excited to share that our team "Code Warriors" won the first prize at the National Hackathon 2024...',
     author: {
       id: 's1',
-      name: 'Rahul Sharma',
+      name: 'Kanhaiya Lal Sahu',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
       role: 'student',
       organization: 'GEC Bilaspur'
@@ -298,8 +298,8 @@ export const StudentProfileComponent: React.FC = () => {
     { id: 'projects', label: 'Projects', icon: Code },
     { id: 'experience', label: 'Experience', icon: Briefcase },
     { id: 'skills', label: 'Skills', icon: BookOpen },
-    { id: 'dashboard', label: 'Dynamic Dashboard', icon: BookOpen },
-    { id: 'portfolio', label: 'Digital Portfolio', icon: FileText }
+    { id: 'dashboard', label: 'Academics', icon: BookOpen },
+    { id: 'portfolio', label: 'Digital Portfolio (AI)', icon: FileText }
   ];
 
   const filteredPosts = mockStudentPosts.filter(post => {

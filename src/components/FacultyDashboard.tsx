@@ -10,6 +10,8 @@ export const FacultyDashboard: React.FC = () => {
   const [selectedDepartment, setSelectedDepartment] = useState('all');
   const [aiProcessingPosts, setAiProcessingPosts] = useState<Set<string>>(new Set());
   const [aiResults, setAiResults] = useState<Map<string, any>>(new Map());
+  const [approvingPosts, setApprovingPosts] = useState<Set<string>>(new Set());
+  const [rejectingPosts, setRejectingPosts] = useState<Set<string>>(new Set());
   
   // State to track dynamic post status changes during demo
   const [posts, setPosts] = useState<Post[]>(dummyPosts);
@@ -28,47 +30,81 @@ export const FacultyDashboard: React.FC = () => {
     { label: 'Total Posts', count: pendingApprovals.length + approvedPosts.length + rejectedPosts.length, color: 'bg-purple-500', icon: FileText },
   ];
 
-  const handleApprove = (postId: string, reason?: string) => {
+  const handleApprove = async (postId: string, reason?: string) => {
     console.log('Approving post:', postId, 'Reason:', reason);
     
-    // Update post status to approved
-    setPosts(prevPosts => 
-      prevPosts.map(post => 
-        post.id === postId 
-          ? { 
-              ...post, 
-              status: 'approved' as const,
-              approvedBy: {
-                id: user?.id || 'faculty1',
-                name: user?.name || 'Faculty Member',
-                role: 'faculty' as const
+    // Set loading state
+    setApprovingPosts(prev => new Set([...prev, postId]));
+    
+    try {
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Update post status to approved
+      setPosts(prevPosts => 
+        prevPosts.map(post => 
+          post.id === postId 
+            ? { 
+                ...post, 
+                status: 'approved' as const,
+                approvedBy: {
+                  id: user?.id || 'faculty1',
+                  name: user?.name || 'Faculty Member',
+                  role: 'faculty' as const
+                }
               }
-            }
-          : post
-      )
-    );
+            : post
+        )
+      );
+    } catch (error) {
+      console.error('Error approving post:', error);
+    } finally {
+      // Remove loading state
+      setApprovingPosts(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(postId);
+        return newSet;
+      });
+    }
   };
 
-  const handleReject = (postId: string, reason: string) => {
+  const handleReject = async (postId: string, reason: string) => {
     console.log('Rejecting post:', postId, 'Reason:', reason);
     
-    // Update post status to rejected
-    setPosts(prevPosts => 
-      prevPosts.map(post => 
-        post.id === postId 
-          ? { 
-              ...post, 
-              status: 'rejected' as const,
-              rejectionReason: reason,
-              rejectedBy: {
-                id: user?.id || 'faculty1',
-                name: user?.name || 'Faculty Member',
-                role: 'faculty' as const
+    // Set loading state
+    setRejectingPosts(prev => new Set([...prev, postId]));
+    
+    try {
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Update post status to rejected
+      setPosts(prevPosts => 
+        prevPosts.map(post => 
+          post.id === postId 
+            ? { 
+                ...post, 
+                status: 'rejected' as const,
+                rejectionReason: reason,
+                rejectedBy: {
+                  id: user?.id || 'faculty1',
+                  name: user?.name || 'Faculty Member',
+                  role: 'faculty' as const
+                }
               }
-            }
-          : post
-      )
-    );
+            : post
+        )
+      );
+    } catch (error) {
+      console.error('Error rejecting post:', error);
+    } finally {
+      // Remove loading state
+      setRejectingPosts(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(postId);
+        return newSet;
+      });
+    }
   };
 
   const handleAIVerification = async (post: any) => {
@@ -262,17 +298,49 @@ export const FacultyDashboard: React.FC = () => {
             <div className="flex space-x-2">
               <button
                 onClick={() => handleAIDecision(postId, 'approved', `AI recommended approval: ${result.reasoning}`)}
-                className="flex items-center space-x-1 px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors flex-1"
+                disabled={approvingPosts.has(postId) || rejectingPosts.has(postId)}
+                className={`flex items-center justify-center space-x-1 px-3 py-2 rounded-md transition-colors flex-1 ${
+                  approvingPosts.has(postId)
+                    ? 'bg-green-400 cursor-not-allowed'
+                    : (approvingPosts.has(postId) || rejectingPosts.has(postId))
+                      ? 'bg-gray-400 cursor-not-allowed text-gray-600'
+                      : 'bg-green-600 hover:bg-green-700 text-white'
+                }`}
               >
-                <CheckCircle size={16} />
-                <span>Accept AI & Approve</span>
+                {approvingPosts.has(postId) ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    <span>Approving...</span>
+                  </>
+                ) : (
+                  <>
+                    <CheckCircle size={16} />
+                    <span>Accept AI & Approve</span>
+                  </>
+                )}
               </button>
               <button
                 onClick={() => handleAIDecision(postId, 'rejected', `AI recommended rejection: ${result.reasoning}`)}
-                className="flex items-center space-x-1 px-3 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors flex-1"
+                disabled={approvingPosts.has(postId) || rejectingPosts.has(postId)}
+                className={`flex items-center justify-center space-x-1 px-3 py-2 rounded-md transition-colors flex-1 ${
+                  rejectingPosts.has(postId)
+                    ? 'bg-red-400 cursor-not-allowed'
+                    : (approvingPosts.has(postId) || rejectingPosts.has(postId))
+                      ? 'bg-gray-400 cursor-not-allowed text-gray-600'
+                      : 'bg-red-600 hover:bg-red-700 text-white'
+                }`}
               >
-                <XCircle size={16} />
-                <span>Accept AI & Reject</span>
+                {rejectingPosts.has(postId) ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    <span>Rejecting...</span>
+                  </>
+                ) : (
+                  <>
+                    <XCircle size={16} />
+                    <span>Accept AI & Reject</span>
+                  </>
+                )}
               </button>
             </div>
           </div>
@@ -281,27 +349,65 @@ export const FacultyDashboard: React.FC = () => {
     );
   };
 
-  const renderPostActions = (post: any) => (
-    <div className="mt-4">
-      {/* Manual Actions */}
-      <div className="flex space-x-2">
-        <button
-          onClick={() => handleApprove(post.id, 'Manually approved by faculty')}
-          className="flex items-center space-x-1 px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors flex-1"
-        >
-          <CheckCircle size={16} />
-          <span>Approve</span>
-        </button>
-        <button
-          onClick={() => handleReject(post.id, 'Manually rejected by faculty')}
-          className="flex items-center space-x-1 px-3 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors flex-1"
-        >
-          <XCircle size={16} />
-          <span>Reject</span>
-        </button>
+  const renderPostActions = (post: any) => {
+    const isApproving = approvingPosts.has(post.id);
+    const isRejecting = rejectingPosts.has(post.id);
+    const isLoading = isApproving || isRejecting;
+    
+    return (
+      <div className="mt-4">
+        {/* Manual Actions */}
+        <div className="flex space-x-2">
+          <button
+            onClick={() => handleApprove(post.id, 'Manually approved by faculty')}
+            disabled={isLoading}
+            className={`flex items-center justify-center space-x-1 px-3 py-2 rounded-md transition-colors flex-1 ${
+              isApproving 
+                ? 'bg-green-400 cursor-not-allowed' 
+                : isLoading 
+                  ? 'bg-gray-400 cursor-not-allowed text-gray-600' 
+                  : 'bg-green-600 hover:bg-green-700 text-white'
+            }`}
+          >
+            {isApproving ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                <span>Approving...</span>
+              </>
+            ) : (
+              <>
+                <CheckCircle size={16} />
+                <span>Approve</span>
+              </>
+            )}
+          </button>
+          <button
+            onClick={() => handleReject(post.id, 'Manually rejected by faculty')}
+            disabled={isLoading}
+            className={`flex items-center justify-center space-x-1 px-3 py-2 rounded-md transition-colors flex-1 ${
+              isRejecting 
+                ? 'bg-red-400 cursor-not-allowed' 
+                : isLoading 
+                  ? 'bg-gray-400 cursor-not-allowed text-gray-600' 
+                  : 'bg-red-600 hover:bg-red-700 text-white'
+            }`}
+          >
+            {isRejecting ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                <span>Rejecting...</span>
+              </>
+            ) : (
+              <>
+                <XCircle size={16} />
+                <span>Reject</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">

@@ -29,6 +29,8 @@ const SmartVerificationPanel: React.FC<SmartVerificationPanelProps> = ({
   const [loading, setLoading] = useState(true);
   const [showDetails, setShowDetails] = useState(false);
   const [manualReason, setManualReason] = useState('');
+  const [isApproving, setIsApproving] = useState(false);
+  const [isRejecting, setIsRejecting] = useState(false);
 
   useEffect(() => {
     analyzePost();
@@ -57,19 +59,55 @@ const SmartVerificationPanel: React.FC<SmartVerificationPanelProps> = ({
     setLoading(false);
   };
 
-  const handleAIDecision = (decision: 'approved' | 'rejected') => {
+  const handleAIDecision = async (decision: 'approved' | 'rejected') => {
     if (!aiResult) return;
     
-    const reason = decision === 'approved' 
-      ? `AI Auto-${decision}: ${aiResult.reasoning}` 
-      : `AI Auto-${decision}: ${aiResult.red_flags.join(', ')}`;
+    // Set loading state
+    if (decision === 'approved') {
+      setIsApproving(true);
+    } else {
+      setIsRejecting(true);
+    }
     
-    onDecision(decision, reason);
+    try {
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const reason = decision === 'approved' 
+        ? `AI Auto-${decision}: ${aiResult.reasoning}` 
+        : `AI Auto-${decision}: ${aiResult.red_flags.join(', ')}`;
+      
+      onDecision(decision, reason);
+    } catch (error) {
+      console.error(`Error ${decision} post:`, error);
+    } finally {
+      // Reset loading state
+      setIsApproving(false);
+      setIsRejecting(false);
+    }
   };
 
-  const handleManualDecision = (decision: 'approved' | 'rejected') => {
-    const reason = manualReason || `Manually ${decision} by faculty`;
-    onDecision(decision, reason);
+  const handleManualDecision = async (decision: 'approved' | 'rejected') => {
+    // Set loading state
+    if (decision === 'approved') {
+      setIsApproving(true);
+    } else {
+      setIsRejecting(true);
+    }
+    
+    try {
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const reason = manualReason || `Manually ${decision} by faculty`;
+      onDecision(decision, reason);
+    } catch (error) {
+      console.error(`Error ${decision} post:`, error);
+    } finally {
+      // Reset loading state
+      setIsApproving(false);
+      setIsRejecting(false);
+    }
   };
 
   const getScoreColor = (score: number) => {
@@ -174,18 +212,46 @@ const SmartVerificationPanel: React.FC<SmartVerificationPanelProps> = ({
             {aiResult?.auto_decision === 'approve' && (
               <button
                 onClick={() => handleAIDecision('approved')}
-                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                disabled={loading || isApproving || isRejecting}
+                className={`px-4 py-2 rounded-lg transition-colors flex items-center space-x-2 ${
+                  isApproving
+                    ? 'bg-green-400 cursor-not-allowed'
+                    : (loading || isApproving || isRejecting)
+                      ? 'bg-gray-400 cursor-not-allowed text-gray-600'
+                      : 'bg-green-600 hover:bg-green-700 text-white'
+                }`}
               >
-                Auto-Approve
+                {isApproving ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    <span>Approving...</span>
+                  </>
+                ) : (
+                  <span>Auto-Approve</span>
+                )}
               </button>
             )}
             
             {aiResult?.auto_decision === 'reject' && (
               <button
                 onClick={() => handleAIDecision('rejected')}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                disabled={loading || isApproving || isRejecting}
+                className={`px-4 py-2 rounded-lg transition-colors flex items-center space-x-2 ${
+                  isRejecting
+                    ? 'bg-red-400 cursor-not-allowed'
+                    : (loading || isApproving || isRejecting)
+                      ? 'bg-gray-400 cursor-not-allowed text-gray-600'
+                      : 'bg-red-600 hover:bg-red-700 text-white'
+                }`}
               >
-                Auto-Reject
+                {isRejecting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    <span>Rejecting...</span>
+                  </>
+                ) : (
+                  <span>Auto-Reject</span>
+                )}
               </button>
             )}
           </div>
@@ -253,18 +319,50 @@ const SmartVerificationPanel: React.FC<SmartVerificationPanelProps> = ({
         <div className="flex space-x-4">
           <button
             onClick={() => handleManualDecision('approved')}
-            className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+            disabled={loading || isApproving || isRejecting}
+            className={`flex-1 px-4 py-2 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
+              isApproving
+                ? 'bg-green-400 cursor-not-allowed'
+                : (loading || isApproving || isRejecting)
+                  ? 'bg-gray-400 cursor-not-allowed text-gray-600'
+                  : 'bg-green-600 hover:bg-green-700 text-white'
+            }`}
           >
-            <CheckCircle className="w-4 h-4" />
-            <span>Approve</span>
+            {isApproving ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                <span>Approving...</span>
+              </>
+            ) : (
+              <>
+                <CheckCircle className="w-4 h-4" />
+                <span>Approve</span>
+              </>
+            )}
           </button>
           
           <button
             onClick={() => handleManualDecision('rejected')}
-            className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center space-x-2"
+            disabled={loading || isApproving || isRejecting}
+            className={`flex-1 px-4 py-2 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
+              isRejecting
+                ? 'bg-red-400 cursor-not-allowed'
+                : (loading || isApproving || isRejecting)
+                  ? 'bg-gray-400 cursor-not-allowed text-gray-600'
+                  : 'bg-red-600 hover:bg-red-700 text-white'
+            }`}
           >
-            <XCircle className="w-4 h-4" />
-            <span>Reject</span>
+            {isRejecting ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                <span>Rejecting...</span>
+              </>
+            ) : (
+              <>
+                <XCircle className="w-4 h-4" />
+                <span>Reject</span>
+              </>
+            )}
           </button>
         </div>
 
