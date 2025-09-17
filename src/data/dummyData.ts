@@ -197,8 +197,8 @@ export const dummyPosts: Post[] = [
   // Pending posts for faculty review
   {
     id: 'pending1',
-    title: 'Participated in Inter-College Basketball Championship',
-    content: 'Our team reached the semi-finals in the Inter-College Basketball Championship held at Sports Complex. I scored 23 points in the quarter-final match against ABC College.',
+    title: 'Secured 1st Rank in Smart India Internal Hackathon 2025',
+    content: 'Proud to announce that our team secured the 1st rank in the Smart India Internal Hackathon 2025. Congratulations to all the students and faculty members who contributed to this achievement!',
     author: {
       id: 's7',
       name: 'Kanhaiya',
@@ -206,14 +206,14 @@ export const dummyPosts: Post[] = [
       role: 'student',
       organization: 'GEC Bilaspur'
     },
-    category: 'Sports',
-    department: 'Sports',
+    category: 'Achievement',
+    department: 'Technical',
     visibility: 'public',
     status: 'pending',
-    attachments: ['participation_certificate.pdf', 'score_sheet.pdf'],
+    attachments: ['hackathon_certificate.pdf'],
     likes: 0,
     comments: 0,
-    createdAt: '2024-01-20T11:30:00Z'
+    createdAt: '2025-09-17T10:00:00Z'
   },
   {
     id: 'pending2',
